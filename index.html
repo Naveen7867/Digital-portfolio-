@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naveen P - Portfolio</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background: linear-gradient(135deg, black, white);
+            scroll-behavior: smooth;
+        }
+
+        /* Profile Section */
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .animated-text {
+            font-size: 1.8rem;
+            margin-top: 10px;
+        }
+
+        /* Buttons */
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            background: linear-gradient(45deg, black, gray);
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, gray, black);
+        }
+
+        /* Sections */
+        .content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .content.show {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .skill-box {
+            background: gray;
+            color: black;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Contact Section */
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Profile Section -->
+    <div class="profile-container">
+        <img src="spider.jpg" alt="Naveen P" class="profile-photo">
+        <h1 class="animated-text">I'm Naveen P</h1>
+        <div class="buttons">
+            <button onclick="toggleSection('about')">About</button>
+            <button onclick="toggleSection('skills')">Skills</button>
+            <button onclick="toggleSection('education')">Education</button>
+            <button onclick="toggleSection('contact')">Contact</button>
+            <button onclick="downloadResume()">Download Resume</button>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="content">
+        <h2>About Me</h2>
+        <p>I am a Web Developer & UI/UX Designer</p>
+        <p>My Talent: Problem Solver</p>
+    </div>
+
+    <!-- Skills Section -->
+    <div id="skills" class="content">
+        <h2>My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-box">
+                <img src="c.jpg" alt="C" class="skill-icon">
+                C
+            </div>
+            <div class="skill-box">
+                <img src="c++.jpg" alt="C++" class="skill-icon">
+                C++
+            </div>
+            <div class="skill-box">
+                <img src="java.jpg" alt="Java" class="skill-icon">
+                Java
+            </div>
+            <div class="skill-box">
+                <img src="python.jpg" alt="Python" class="skill-icon">
+                Python
+            </div>
+            <div class="skill-box">
+                <img src="html.jpg" alt="HTML" class="skill-icon">
+                HTML
+            </div>
+        </div>
+    </div>
+
+    <!-- Education Section -->
+    <div id="education" class="content">
+        <h2>Education</h2>
+        <p>• LFHSS Boys School, 2021 - SSLC</p>
+        <p>• LFHSS Boys School, 2022 - HSC</p>
+        <p>• Government Arts and Science College, Avinashi (2023–2026) - B.Sc in Computer Science</p>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="content contact-info">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:naveenparthi25@gmail.com">naveenparthi25@gmail.com</a></p>
+        <p><a href="https://www.instagram.com/yourinsta" target="_blank">Instagram</a></p>
+        <p><a href="https://www.linkedin.com/in/yourlinkedin" target="_blank">LinkedIn</a></p>
+    </div>
+
+    <!-- JavaScript for Smooth Transitions -->
+    <script>
+        function toggleSection(id) {
+            let section = document.getElementById(id);
+
+            document.querySelectorAll('.content').forEach(el => {
+                if (el !== section) {
+                    el.style.opacity = '0';
+                    setTimeout(() => { el.style.display = 'none'; }, 500);
+                }
+            });
+
+            if (section.style.display === "block") {
+                section.style.opacity = '0';
+                setTimeout(() => { section.style.display = "none"; }, 500);
+            } else {
+                section.style.display = "block";
+                setTimeout(() => { section.style.opacity = '1'; }, 50);
+            }
+        }
+
+        function downloadResume() {
+            const link = document.createElement('a');
+            link.href = 'resumes.pdf';
+            link.download = 'Naveen_P_Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+
+</body>
+</html>
